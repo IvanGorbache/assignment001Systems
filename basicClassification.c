@@ -16,7 +16,7 @@ int factorial(int a)
 }
 int isPrime(int a)
 {
-	if(a <= 1)
+	if(a < 1)
 	{
 		return FALSE;
 	}
