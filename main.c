@@ -50,7 +50,7 @@ int main(int argc, char *argv[]){
 				printf(" %d",i);
 			}
 		}
-	printf("\n");
+		printf("\n");
 	}
 	return 0;
 }
