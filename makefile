@@ -52,6 +52,8 @@ all: loops recursives loopd recursived main.o mains maindloop maindrec
 clean:
 	rm -f *.o *.so *.a mains maindrec maindloop
 	
+.PHONY: clean all
+	
 .PHONY: clean all	
 	
 

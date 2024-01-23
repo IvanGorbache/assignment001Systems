@@ -9,7 +9,7 @@ int getLength(int a)
     int n = 0;
     do 
     {
-        a/=10;
+        a/=REMOVE_DIGIT;
         n++;
     }while(a!=0);
     return n;
@@ -24,18 +24,22 @@ int powerOf(int a, int b)
     }
     return result;
 }
-int isPalindrome(int a)
+int isPalindromeCheck(int a, int len)
 {
-	if(getLength(a) == 1)
+	if(len == 1)
 	{
 		return TRUE;
 	}
-	else if(getLength(a) == MIN_LENGTH)
+	else if(len == MIN_LENGTH)
 	{
-		return a%GET_DIGIT == a/powerOf(REMOVE_DIGIT,getLength(a)-1);
+		return a%GET_DIGIT == a/REMOVE_DIGIT;
 	}
-	return isPalindrome(a%powerOf(GET_DIGIT,getLength(a)-1)/REMOVE_DIGIT) && (a%GET_DIGIT == a/powerOf(REMOVE_DIGIT,getLength(a)-1));
+	return isPalindromeCheck((a%powerOf(GET_DIGIT,len-1))/REMOVE_DIGIT,len-2) && (a%GET_DIGIT == a/powerOf(REMOVE_DIGIT,len-1));
 	
+}
+int isPalindrome(int a)
+{
+	return isPalindromeCheck(a, getLength(a));	
 }
 int checkAromstrongRecrusive(int a,int digits)
 {

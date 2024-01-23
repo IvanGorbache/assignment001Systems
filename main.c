@@ -1,44 +1,55 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "NumClass.h"
-int main(){
+#define MINARGS 3
+#define START_ARG 1
+#define END_ARG 2
+int main(int argc, char *argv[]){
 	int start = 0, finish = 0, i = 0;
-	scanf("%d",&start);
-	scanf("%d",&finish);
+	if(argc!=MINARGS)
+	{
+		scanf("%d",&start);
+		scanf("%d",&finish);
+	}
+	else
+	{
+		start = atoi(argv[START_ARG]);
+		finish = atoi(argv[END_ARG]);
+	}
 	if((start>0 && finish> 0) && (start<=finish))
 	{
-		printf("\nThe Armstrong numbers are: ");
+		printf("The Armstrong numbers are:");
 		for(i = start;i<=finish;i++)
 		{
 			if(isArmstrong(i))
 			{
-				printf("%d ",i);
+				printf(" %d",i);
 			}
 		}
-		printf("\nThe palindrome numbers are: ");
+		printf("\nThe Palindromes are:");
 		for(i = start;i<=finish;i++)
 		{
 			if(isPalindrome(i))
 			{
-				printf("%d ",i);
+				printf(" %d",i);
 			}
 		}
-		printf("\nThe Prime numbers are: ");
+		printf("\nThe Prime numbers are:");
 		for(i = start;i<=finish;i++)
 		{
 			if(isPrime(i))
 			{
-				printf("%d ",i);
+				printf(" %d",i);
 			}
 		}
-		printf("\nThe Strong numbers are: ");
+		printf("\nThe Strong numbers are:");
 		for(i = start;i<=finish;i++)
 		{
 			if(isStrong(i))
 			{
-				printf("%d ",i);
+				printf(" %d",i);
 			}
 		}
 	}
-	printf("\n");
 	return 0;
 }

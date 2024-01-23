@@ -1,7 +1,7 @@
 #include "NumClass.h"
 #define TRUE 1
 #define FALSE 0
-#define PRIME_MIN 3
+#define PRIME_MIN 2
 #define GET_DIGIT 10
 #define REMOVE_DIGIT 10
 int factorial(int a)
@@ -20,7 +20,7 @@ int isPrime(int a)
 	{
 		return FALSE;
 	}
-    for(int i = PRIME_MIN;i<a;i++)
+    for(int i = PRIME_MIN;i<=a/PRIME_MIN;i++)
     {
         if(a%i==0)
         {
