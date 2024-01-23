@@ -1,6 +1,9 @@
 CFLAGS = -Wall -g
 CC = gcc
 
+#ALL
+all: libclassloops.a libclassrec.a libclassrec.so libclassloops.so mains maindloop maindrec
+
 #BASIC
 basicClassification.o: basicClassification.c NumClass.h
 	$(CC) $(CFLAGS) -c $<
@@ -47,13 +50,9 @@ maindloop: main.o libclassloops.so
 maindrec: main.o libclassrec.so
 	$(CC) $(CFLAGS) -o $@ $< ./libclassrec.so
 
-all: loops recursives loopd recursived main.o mains maindloop maindrec
+.PHONY: clean all	
 
 clean:
 	rm -f *.o *.so *.a mains maindrec maindloop
-	
-.PHONY: clean all
-	
-.PHONY: clean all	
 	
 
