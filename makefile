@@ -6,15 +6,15 @@ all: libclassloops.a libclassrec.a libclassrec.so libclassloops.so mains maindlo
 
 #BASIC
 basicClassification.o: basicClassification.c NumClass.h
-	$(CC) $(CFLAGS) -c $<
+	$(CC) $(CFLAGS) -c $^
 	
 #LOOP
 advancedClassificationLoop.o: advancedClassificationLoop.c NumClass.h
-	$(CC) $(CFLAGS) -c $<
+	$(CC) $(CFLAGS) -c $^
 	
 #RECURSIVE
 advancedClassificationRecursion.o: advancedClassificationRecursion.c NumClass.h
-	$(CC) $(CFLAGS) -c $<
+	$(CC) $(CFLAGS) -c $^
 	
 #STATIC LOOP LIBRARY
 libclassloops.a: advancedClassificationLoop.o basicClassification.o
@@ -28,17 +28,17 @@ recursives: libclassrec.a
 
 #DYNAMIC REC LIBRARY
 libclassrec.so: advancedClassificationRecursion.o basicClassification.o
-	$(CC) -shared -o $(FLAGS) $@ $^	
+	$(CC) -fPIC -shared -o $(FLAGS) $@ $^	
 recursived: libclassrec.so
 
 #DYNAMIC LOOP LIBRARY
 libclassloops.so: advancedClassificationLoop.o basicClassification.o
-	$(CC) -shared -o $(FLAGS) $@ $^
+	$(CC) -fPIC -shared -o $(FLAGS) $@ $^
 loopd: libclassloops.so
 		
 #MAIN	
 main.o: main.c NumClass.h
-	$(CC) $(CFLAGS) -c $<
+	$(CC) $(CFLAGS) -c $^
 
 #EXE
 mains: main.o libclassrec.a
